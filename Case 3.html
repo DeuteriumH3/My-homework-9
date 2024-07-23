@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Case 3</title>
+    </head>
+    <body>
+    <script>
+        "use strict";
+
+        /*3. Написать программу, которая преобразует введённую пользователем строку, удаляя из неё лишние пробелы, то есть в преобразованной
+        строке не должно быть более одного пробела подряд. В учебных целях не допускается использование регулярных выражений, а также функций
+        из сторонних библиотек. При программной реализации функций использовать рекурсию.*/
+
+        function removeExtraSpaces(str) {
+            if (str.length === 0) {
+                return ""; // Базовый случай: если строка пустая, возвращаем пустую строку
+            }
+
+            if (str[0] === " " && str[1] === " ") {
+                // Если первый и второй символы - пробелы, удаляем второй пробел
+                return removeExtraSpaces(str.substring(1));
+            } else {
+                // В противном случае, берем первый символ и рекурсивно обрабатываем остальную часть строки
+                return str[0] + removeExtraSpaces(str.substring(1));
+            }
+            }
+
+            function processString() {
+            const inputString = prompt("Введите строку:");
+            const resultString = removeExtraSpaces(inputString);
+            alert("Преобразованная строка: " + resultString);
+            }
+
+            processString();
+    </script>
+    </body>
+</html>

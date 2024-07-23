@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Case 3
+  </title>
+</head>
+<body>
+  <script>
+    'use strict';
+      
+    /*3. Написать программу, осуществляющую сортировку введенного пользователем массива чисел алгоритмом быстрой сортировки. Быструю сортировку 
+    реализовать в виде рекурсивной функции. Ввод массива должен осуществляться в одном окне prompt, а числа при вводе отделяться пробелами.*/
+
+    function quickSort(arr, left, right) {
+        if (left >= right) {
+            return; // Базовый случай: уже отсортировано
+        }
+        let pivotIndex = partition(arr, left, right);
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+        }
+
+        function partition(arr, left, right) {
+        let pivot = arr[right];
+        let i = left - 1;
+
+        for (let j = left; j <= right - 1; j++) {
+            if (arr[j] <= pivot) {
+            i++;
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            }
+        }
+
+        let temp = arr[i + 1];
+        arr[i + 1] = arr[right];
+        arr[right] = temp;
+
+        return i + 1;
+        }
+
+        function sortArray() {
+        let input = prompt("Введите массив чисел через пробел:");
+        let numbers = input.split(" ").map(Number);
+        quickSort(numbers, 0, numbers.length - 1);
+        alert("Отсортированный массив: " + numbers.join(" "));
+        }
+
+        sortArray();
+  </script>
+</body>
+
+</html>

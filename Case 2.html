@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Case 2</title>
+    </head>
+    <body>
+    <script>
+        "use strict";
+
+        /*2. Написать программу, которая находит корни квадратного уравнения, заданного вводимыми пользователем коэффициентами a, b и c.
+        Решение квадратного уровнения оформить в виде функции. Также оформить в виде функции проверку корректности ввода числового значения.
+        Использовать эту функцию для проверки каждого коэффициента, который вводит пользователь.*/
+
+        function checkInput(value, name) {
+            // Проверяет, является ли значение числом и не пустое ли оно
+            if (value === null || value === "" || isNaN(value)) {
+                alert(`Ошибка! Введите числовое значение для ${name}.`);
+                return false;
+            }
+            return true;
+            }
+
+            function solveQuadraticEquation(a, b, c) {
+                let discriminant = Math.pow(b, 2) - 4 * a * c;
+
+                if (discriminant >= 0) {
+                    let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                    let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                    return (x1, x2);
+                } else if (discriminant == 0) {
+                    let x = - b / (2 * a);
+                } else {
+                    return [null];
+                }
+            }
+
+            let a = prompt("Введите коэффициент a");
+            let b = prompt("Введите коэффициент b");
+            let c = prompt("Введите коэффициент c");
+
+            if (checkInput(a, "a") && checkInput(b, "b") && checkInput(c, "c")) {
+            a = parseFloat(a);
+            b = parseFloat(b);
+            c = parseFloat(c);
+            let result = solveQuadraticEquation(a, b, c);
+
+            if (result.length == 2) {
+            console.log(result[0], result[1]);
+            }
+
+            console.log(result);
+            }
+    </script>
+    </body>
+</html>

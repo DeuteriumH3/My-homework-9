@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Case 2
+  </title>
+</head>
+<body>
+  <script>
+    'use strict';
+      
+    /*2. Проверить, является ли введенная пользователем строка палиндромом, для чего реализовать рекурсивный алгоритм и оформить его в виде функции. 
+    В учебных целях не допускается использование циклов.*/
+
+    function isPalindrome(str) {
+      if (str.length <= 1) {
+        return true; 
+      }
+      if (str[0] === str[str.length - 1]) {
+        return isPalindrome(str.substring(1, str.length - 1));
+      }
+      return false;
+    }
+
+    function checkPalindrome() {
+      let input = prompt("Введите строку:");
+      let isPal = isPalindrome(input);
+      alert("Является ли строка палиндромом: " + isPal);
+    }
+
+    checkPalindrome();    
+  </script>
+</body>
+
+</html>

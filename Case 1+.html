@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Case 1
+  </title>
+</head>
+<body>
+  <script>
+    'use strict';
+      
+    /*1. Написать функцию, возвращающую среднее значение любого количества аргументов. Ввод чисел для вычисления их среднего значения должен 
+    осуществляться в одном окне prompt, а числа при вводе отделяться пробелами.*/
+
+    function average(...numbers) {
+      if (numbers.length === 0) {
+        return 0;
+      }
+      let sum = numbers.reduce((acc, curr) => acc + curr, 0);
+      return sum / numbers.length;
+    }
+
+    function getAverage() {
+      let input = prompt("Введите числа через пробел:");
+      let numbers = input.split(" ").map(Number);
+      let avg = average(...numbers);
+      alert("Среднее значение: " + avg);
+    }
+
+    getAverage();
+  </script>
+</body>
+
+</html>

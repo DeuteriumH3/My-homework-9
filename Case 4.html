@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Case 4</title>
+    </head>
+    <body>
+    <script>
+        "use strict";
+
+        /*4. Для введённого пользователем массива чисел осуществить поиск элемента, также введённого пользователем с помощью бинарного поиска.
+        Алгоритм реализовать в виде рекурсивной функции. Ввод массива должен осуществляться в одном окне prompt, а числа при вводе отделяться
+        пробелами. Подразумевается, что массив, вводимый пользователем, заранее отсортирован. Проверку корректности ввода пользователем
+        осуществлять не нужно.*/
+        
+        function binarySearch(array, target, left, right) {
+            if (left > right) {
+                return -1; // Элемент не найден
+            }
+
+            const middle = Math.floor((left + right) / 2);
+
+            if (array[middle] === target) {
+                return middle; // Элемент найден
+            } else if (array[middle] < target) {
+                // Ищем в правой половине массива
+                return binarySearch(array, target, middle + 1, right);
+            } else {
+                // Ищем в левой половине массива
+                return binarySearch(array, target, left, middle - 1);
+            }
+            }
+
+            function findElement() {
+            const inputArrayString = prompt("Введите отсортированный массив чисел через пробел:");
+            const inputArray = inputArrayString.split(" ").map(Number);
+            const target = parseInt(prompt("Введите число для поиска:"));
+
+            const result = binarySearch(inputArray, target, 0, inputArray.length - 1);
+
+            if (result !== -1) {
+                alert(`Элемент ${target} найден в массиве с индексом ${result}`);
+            } else {
+                alert(`Элемент ${target} не найден в массиве.`);
+            }
+            }
+
+            findElement();
+    </script>
+    </body>
+</html>
